@@ -3,3 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root{
+    text-align: center;
+}
+
+.hidden, #inputnumber, #sendbutton{
+    display: none;
+    text-align: center;
+}
