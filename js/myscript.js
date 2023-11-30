@@ -45,28 +45,32 @@ sendButton.addEventListener("click",
     }
 )
 
+// al click del bottone confronta
+confrontbt.addEventListener("click", 
+    function(){
+        // confrontiamo i due array con la funzione
+        const result = confrontarray(outputNum,inputNum);
+        
+        if(result===true) document.getElementById("risultato").innerHTML = "Bravo! Hai una memoria di ferro!";
+
+        else document.getElementById("risultato").innerHTML = "Scarsone! Hai sbagliato!"
+    }
+)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// funzione per il confronto di due array
+function confrontarray(array1,array2) {
+    // se gli array sono di lunghezza diversa ritorna falso
+    if(array1.length !== array2.length) return false;
+    // se no confrontiamo ogni elemento dell'array
+    else {
+        for(var i = 0; i<array1.length; i++){
+            if(array1[i] !== array2[i]) return false;
+        }
+        return true;
+    }  
+}
 
 
 
