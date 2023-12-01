@@ -23,8 +23,10 @@ setTimeout(function(){
     sendButton.style.display = "inline-block";
 }, 30000);
 
-// definizione array vuoto dove aggiungere i numeri dell'utente
+// definizione array 
 let inputNum = [];
+let wrongNum = [];
+let rightNum = [];
 
 // prendiamo in input i numeri dell'utente
 let iNumber = document.getElementById("inputnumber");
@@ -50,10 +52,17 @@ confrontbt.addEventListener("click",
     function(){
         // confrontiamo i due array con la funzione
         const result = confrontarray(outputNum,inputNum);
+
+        console.log("I numeri che hai indovinato sono " + rightNum);
+        console.log("I numeri che non hai indovinato sono " + wrongNum);
         
         if(result===true) document.getElementById("risultato").innerHTML = "Bravo! Hai una memoria di ferro!";
 
-        else document.getElementById("risultato").innerHTML = "Scarsone! Hai sbagliato!"
+        else document.getElementById("risultato").innerHTML = "Scarsone! Hai sbagliato! <br> I numeri che hai indovinato sono " + rightNum + "<br> I numeri che non hai indovinato sono " + wrongNum;
+
+        document.getElementById("outputnumber").innerHTML = outputNum;
+        document.getElementById("h3_1").style.display = "none";
+        document.getElementById("h4_1").style.display = "none";
     }
 )
 
@@ -66,9 +75,11 @@ function confrontarray(array1,array2) {
     // se no confrontiamo ogni elemento dell'array
     else {
         for(var i = 0; i<array1.length; i++){
-            if(array1[i] !== array2[i]) return false;
+            if(array1[i] === array2[i]) rightNum.push(array1[i]);
+            else wrongNum.push(array2[i]);
         }
-        return true;
+        if(wrongNum.length >= 1) return false;
+        else return true;
     }  
 }
 
